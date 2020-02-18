@@ -37,16 +37,25 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="77" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="🤚"/>
+                                                <connections>
+                                                    <action selector="paperChoice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nqQ-Ji-REd"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4CE-nb-cOz">
                                                 <rect key="frame" x="97" y="0.0" width="77" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="👊"/>
+                                                <connections>
+                                                    <action selector="rockChoice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZCy-1P-DxK"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnu-Z1-9aq">
                                                 <rect key="frame" x="194" y="0.0" width="77" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="72"/>
                                                 <state key="normal" title="✌️"/>
+                                                <connections>
+                                                    <action selector="scissorChoice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BBG-q5-QkT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -56,6 +65,9 @@
                                         <state key="normal" title="Gioca ancora">
                                             <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="playAgainChoice:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RtH-he-vCb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -67,6 +79,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="compChoice" destination="iDP-ee-11i" id="sl8-WV-cn9"/>
+                        <outlet property="gameState" destination="sUh-Az-WmM" id="R2f-yD-Bcj"/>
+                        <outlet property="paperBtn" destination="LzM-c6-UMB" id="YIk-V0-vUg"/>
+                        <outlet property="playAgainBtn" destination="Ghl-EQ-62a" id="yk1-UE-g3D"/>
+                        <outlet property="rockBtn" destination="4CE-nb-cOz" id="3gK-Rz-AsE"/>
+                        <outlet property="scissorBtn" destination="Qnu-Z1-9aq" id="LhF-px-t6Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
