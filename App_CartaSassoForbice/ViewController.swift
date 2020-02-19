@@ -11,6 +11,11 @@ import GameplayKit
 
 class ViewController: UIViewController {
     
+    let baseStateStr = "Carta, Sasso, Forbice?"
+    let winStateStr = "Hai Vinto!"
+    let loseStateStr = "Hai Perso!"
+    let drawStateStr = "Pareggio!"
+    
     let paperEmoji = "✋"
     let rockEmoji = "👊"
     let scissorEmoji = "✌️"
@@ -18,15 +23,10 @@ class ViewController: UIViewController {
     let randomDist = GKRandomDistribution(lowestValue: 0,highestValue: 2)
     
     @IBOutlet weak var compChoice: UILabel!
-    
     @IBOutlet weak var gameState: UILabel!
-    
     @IBOutlet weak var paperBtn: UIButton!
-    
     @IBOutlet weak var rockBtn: UIButton!
-    
     @IBOutlet weak var scissorBtn: UIButton!
-    
     @IBOutlet weak var playAgainBtn: UIButton!
     
     override func viewDidLoad() {
@@ -49,24 +49,26 @@ class ViewController: UIViewController {
     @IBAction func playAgainChoice(_ sender: Any) {
         compChoice.text = "🤖"
         playAgainBtn.isHidden = true
-        gameState.text = "Carta, Sasso, Forbice?"
+        gameState.text = baseStateStr
         self.view.backgroundColor = UIColor.gray
         enebShowPlayBtn()
     }
     
+    // Calcola lo stato di arrivo date le due scelte (player e computer)
     func calcState(_ playerVal: Int,_ compVal: Int) {
         if(compVal == ((playerVal + 1) % 3)) {
             // vinto
-            genState(playerVal, compVal, "Hai Vinto!", UIColor.green)
+            genState(playerVal, compVal, winStateStr, UIColor.green)
         } else if(compVal == ((playerVal + 2) % 3)) {
             // perso
-            genState(playerVal, compVal, "Hai Perso!", UIColor.red)
+            genState(playerVal, compVal, loseStateStr, UIColor.red)
         } else {
             // pareggio
-            genState(playerVal, compVal, "Pareggio!", UIColor.gray)
+            genState(playerVal, compVal, drawStateStr, UIColor.gray)
         }
     }
     
+    // Genera lo stato calcolato
     func genState(_ playerVal: Int,_ compVal: Int,_ stateDescr: String,_ bgColor: UIColor) {
         self.view.backgroundColor = bgColor
         compChoice.text = calcEmoji(compVal)
@@ -75,6 +77,7 @@ class ViewController: UIViewController {
         enablePlayAgain()
     }
     
+    // Calcola l'emoji data la scelta
     func calcEmoji(_ val: Int) -> String {
         if(val == 0) {
             return paperEmoji;
@@ -85,6 +88,7 @@ class ViewController: UIViewController {
         }
     }
     
+    // Abilita e mostra i bottoni di scelta del player
     func enebShowPlayBtn() {
         paperBtn.isEnabled = true;
         paperBtn.isHidden = false;
@@ -97,6 +101,8 @@ class ViewController: UIViewController {
 
     }
     
+    // Disabilita i bottoni di scelta del player e nasconde solo quelli
+    // che non corrispondono al parametro in input
     func disableHide(_ toNotHide: Int) {
         paperBtn.isEnabled = false
         rockBtn.isEnabled = false
@@ -114,11 +120,13 @@ class ViewController: UIViewController {
         }
     }
     
+    // Abilita e mostra il bottone "Gioca ancora"
     func enablePlayAgain() {
         playAgainBtn.isHidden = false
         playAgainBtn.isEnabled = true
     }
     
+    // Esegue la scelta del computer
     func randomChoice() -> Int {
         return randomDist.nextInt()
     }
